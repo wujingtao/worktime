@@ -1,0 +1,69 @@
+create database worktime;
+use worktime;
+
+create table project
+(
+ pro_id int auto_increment primary key not null,
+ pro_name varchar(20) unique
+)
+
+insert into project(pro_name) values("产品：宫腔");
+insert into project(pro_name) values("产品：宫颈");
+insert into project(pro_name) values("产品：光源");
+insert into project(pro_name) values("研究：相位");
+insert into project(pro_name) values("研究：OCT");
+insert into project(pro_name) values("研究：专利");
+insert into project(pro_name) values("光纤显微镜");
+insert into project(pro_name) values("临床");
+insert into project(pro_name) values("调研");
+insert into project(pro_name) values("法规");
+insert into project(pro_name) values("体系");
+insert into project(pro_name) values("销售");
+insert into project(pro_name) values("综合事务");
+insert into project(pro_name) values("病假事假");
+insert into project(pro_name) values("其它");
+
+create table employee
+(
+emp_id int auto_increment primary key not null,
+emp_name varchar(10) unique
+)
+
+insert into employee(emp_name) values("任均宇");
+insert into employee(emp_name) values("刘俊");
+insert into employee(emp_name) values("陈佩虹");
+insert into employee(emp_name) values("梁秋华");
+insert into employee(emp_name) values("陈陆地");
+insert into employee(emp_name) values("吴春波");
+insert into employee(emp_name) values("刘满林");
+insert into employee(emp_name) values("王翰林");
+insert into employee(emp_name) values("易遥");
+insert into employee(emp_name) values("张莉芸");
+insert into employee(emp_name) values("赵晖");
+insert into employee(emp_name) values("古小燕");
+insert into employee(emp_name) values("谭春颜");
+insert into employee(emp_name) values("肖诗");
+insert into employee(emp_name) values("韩防");
+insert into employee(emp_name) values("吴竞焘");
+insert into employee(emp_name) values("谭文安");
+insert into employee(emp_name) values("邝磊凡");
+insert into employee(emp_name) values("揭光锦");
+insert into employee(emp_name) values("李文达");
+insert into employee(emp_name) values("陈志英");
+
+
+create table projecttime
+(
+pt_id int auto_increment primary key not null,
+pt_year int,
+pt_date  varchar(10),
+pt_first int,
+pt_time float(4,2),
+pt_overtime float(4,2),
+pt_pro_id int,
+pt_emp_id int
+)
+
+
+//统计
+select min(pt_first),sum(pt_time),sum(pt_overtime) from projecttime where pt_year=2015 group by pt_date
